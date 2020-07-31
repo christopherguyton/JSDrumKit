@@ -1,0 +1,57 @@
+html {
+  font-size: 10px;
+}
+
+body {
+    background-image: url(images/13-eclectic-ms.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.keys {
+    display: flex;
+    flex: 2;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .key {
+    border: .4rem solid black;
+    border-radius: .5rem;
+    margin: 5rem;
+    font-size: 2rem;
+    padding: 1rem .5rem;
+    transition: all .08s ease;
+    width: 15rem;
+    text-align: center;
+    color: white;
+    background: rgba(0, 0, 0, 0.788);
+    text-shadow: 0 0 .5rem black;
+  }
+
+  
+.drumset {
+    display: inline-block;
+    align-content: center;
+    text-align: center;
+    justify-content: center;
+
+}
+
+.sound {
+    font-size: large;
+    align-items: center;
+    text-align: justify;
+    display: inline-block;
+}
+
+.textwrapper {
+    width: 90px;
+    margin:0 auto;
+}
+
+.playing {
+    transform: scale(1.1);
+    border-color: yellow;
+    box-shadow: 0 0 10px black;
+}

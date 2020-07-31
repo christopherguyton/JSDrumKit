@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>JavaScript Drum Kit</title>
+    <meta name="description" content="Drum Kit I Made">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div class="drumset">
+        <div class="keys row">
+            <div data-key="65" class="key">
+                <img src="drumkit/clapsound.png" width="30%">
+                <div class="textwrapper">
+                    <span class="sound">(A) CLAP</span>
+                </div>
+            </div>
+            <div data-key="83" class="key">
+                <img src="drumkit/hithat.png" width="30%">
+                <div class="textwrapper">
+                    <span class="sound">(S) HI-HAT</span>
+                </div>
+            </div>
+            <div data-key="68" class="key">
+                <img src="drumkit/bassdrum.png" width="30%">
+                <div class="textwrapper">
+                    <span class="sound">(D) BASS</span>
+                </div>
+            </div>
+            <div data-key="70" class="key">
+                <img src="drumkit/floortom.png" width="30%">
+                <div class="textwrapper">
+                    <span class="sound">(F) TOM</span>
+                </div>
+            </div>
+            <div data-key="71" class="key">
+                <img src="drumkit/snaredrum.png" width="30%">
+                <div class="textwrapper">
+                    <span class="sound">(G) SNARE</span>
+                </div>
+            </div>
+            <div data-key="90" class="key">
+                <img src="drumkit/woodblockpng.png" width="30%">
+                <div class="textwrapper">
+                    <span class="sound">(Z) BLOCK</span>
+                </div>
+            </div>
+            <div data-key="88" class="key">
+                <img src="drumkit/ridecymbal.png" width="30%">
+                <div class="textwrapper">
+                    <span class="sound">(X) RIDE</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <audio data-key="65" src="sounds/clap.wav"></audio>
+    <audio data-key="83" src="sounds/hihat.wav"></audio>
+    <audio data-key="68" src="sounds/kick.wav"></audio>
+    <audio data-key="70" src="sounds/tom.wav"></audio>
+    <audio data-key="71" src="sounds/snare.wav"></audio>
+    <audio data-key="90" src="sounds/tink.wav"></audio>
+    <audio data-key="88" src="sounds/ride.wav"></audio>
+
+    <script>
+        function playSound(e) {
+            const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+            const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+            if (!audio) return; // stop function from running
+            audio.currentTime = 0; // rewind to start
+            audio.play();
+            key.classList.add('playing');
+        }
+
+
+        function removeTransition(e) {
+            if (e.propertyName !== 'transform') return; //skip if it's not a transform
+            this.classList.remove('playing')
+        }
+
+
+        const keys = document.querySelectorAll('.key');
+        keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+
+        window.addEventListener('keydown', playSound);
+
+        /*  window.addEventListener('keyup', function(e) {
+               const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+               const key= document.querySelector(`.key[data-key="${e.keyCode}"]`);
+               audio.pause();
+               key.classList.add('notPlaying');
+           });*/
+
+    </script>
+</body>
+
+</html>

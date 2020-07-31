@@ -1,0 +1,12 @@
+{
+  "name": "projectsfor30",
+  "version": "1.0.0",
+  "description": "",
+  "main": "drumset.html",
+  "scripts": {
+    "start": "npm start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
